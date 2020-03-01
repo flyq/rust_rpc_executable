@@ -38,6 +38,7 @@ curl -X POST -H "Content-Type: application/json" -d '{"jsonrpc": "2.0", "method"
 ```
 terminal 1: `status: exit code: 1 `   
 terminal 2: `{"jsonrpc":"2.0","result":"cita-cli run success","id":123}`   
+It failed, because the exit code is 1.
 
 
 

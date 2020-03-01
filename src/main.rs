@@ -46,7 +46,7 @@ fn main() {
                     .output()
                     .expect("failed to execute process");
 
-                    println!("subcom1: {}, subcom2: {}, code：{}, private-key: {}, address: {}", 
+                    println!("subcom1: {}, subcom2: {}, code: {}, private-key: {}, address: {}", 
                         map.get("subcom1").unwrap(), 
                         map.get("subcom2").unwrap(), 
                         map.get("code").unwrap(), 
