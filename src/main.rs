@@ -31,7 +31,7 @@ fn main() {
     });
 
     io.add_method("cita-cli", |params: Params| {
-        match params.parse::<Object(HashMap)>() {
+        match params.parse::<HashMap<String, String>>() {
             Ok(map) => {
                 let cita = Command::new("cita-cli")
                     .arg(map.get("subcom1").unwrap())
