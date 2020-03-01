@@ -46,7 +46,15 @@ fn main() {
                     .output()
                     .expect("failed to execute process");
 
-                println!("status: {} ", cita.status);
+                    println!("subcom1: {}, subcom2: {}, code：{}, private-key: {}, address: {}", 
+                        map.get("subcom1").unwrap(), 
+                        map.get("subcom2").unwrap(), 
+                        map.get("code").unwrap(), 
+                        map.get("private-key").unwrap(),
+                        map.get("address").unwrap()
+                    );
+                    println!("status: {} ", cita.status);
+
 
                 Ok(Value::String("cita-cli run success".into()))
             },
