@@ -33,17 +33,22 @@ fn main() {
         match params.parse::<Object(map)>() {
             Ok(map) => {
                 let cita = Command::new("cita-cli")
-                    .arg(map.get("subcom1"))
-                    .arg(map.get("subcom2"))
+                    .arg(map.get("subcom1").unwrap())
+                    .arg(map.get("subcom2").unwrap())
                     .arg("--code")
-                    .arg(map.get("code"))
+                    .arg(map.get("code").unwrap())
                     .arg("--private-key")
-                    .arg(map.get("private-key"))
+                    .arg(map.get("private-key").unwrap())
                     .arg("--address")
-                    .arg(mag.get("address"))
-                    .arg("--url http://127.0.0.1:1337");
-                Ok(Value::String("hello, ls".into()))
-            }
+                    .arg(mag.get("address").unwrap())
+                    .arg("--url http://127.0.0.1:1337")
+                    .output()
+                    .expect("failed to execute process");
+
+                println!("status: {} ", cita.status);
+
+                Ok(Value::String("cita-cli run success".into()))
+            },
             _ => Ok(Value::String("world".into())),
         }
     });
