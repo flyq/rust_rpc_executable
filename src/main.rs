@@ -1,6 +1,7 @@
 use jsonrpc_http_server::jsonrpc_core::*;
 use jsonrpc_http_server::*;
 use std::process::Command;
+use std::collections::HashMap;
 
 fn main() {
     let mut io = IoHandler::default();
@@ -30,7 +31,7 @@ fn main() {
     });
 
     io.add_method("cita-cli", |params: Params| {
-        match params.parse::<Object(map)>() {
+        match params.parse::<Object(HashMap)>() {
             Ok(map) => {
                 let cita = Command::new("cita-cli")
                     .arg(map.get("subcom1").unwrap())
@@ -40,7 +41,7 @@ fn main() {
                     .arg("--private-key")
                     .arg(map.get("private-key").unwrap())
                     .arg("--address")
-                    .arg(mag.get("address").unwrap())
+                    .arg(map.get("address").unwrap())
                     .arg("--url http://127.0.0.1:1337")
                     .output()
                     .expect("failed to execute process");
